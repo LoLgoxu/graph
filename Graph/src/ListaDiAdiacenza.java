@@ -18,18 +18,18 @@ public class ListaDiAdiacenza {
 
     // Aggiunge un Arco
     public void addArco(int source, int destination) {
-        adjList.putIfAbsent(source, new ArrayList<>());
-        adjList.putIfAbsent(destination, new ArrayList<>());
-        adjList.get(source).add(destination);
-        adjList.get(destination).add(source); // For undirected graph
+        adjList.putIfAbsent(source, new ArrayList<>()); // se assente mettere nella hash map nella x la chiave e nella lista i valori
+        adjList.putIfAbsent(destination, new ArrayList<>()); // stessa cosa ma nella y
+        adjList.get(source).add(destination); // aggiunge il valore di source alla destinazione
+        // adjList.get(destination).add(source); // For undirected graph
     }
 
     // Print della lista adiacente
     public void printList() {
-        for (Integer vertex : adjList.keySet()) {
-            System.out.print(vertex + ": ");
-            for (Integer edge : adjList.get(vertex)) {
-                System.out.print(edge + " ");
+        for (Integer vertex : adjList.keySet()) { // il vertice Integer loop each time la grandezza del keyset da 0 alla grandezza della lista
+            System.out.print(vertex + "-> "); // output = 0 : listEdges
+            for (Integer edge : adjList.get(vertex)) { // l'arco Integer loop each time la lunghezza del vertice
+                System.out.print(edge + " "); // output = vertice : 1 2 0 ---
             }
             System.out.println();
         }
